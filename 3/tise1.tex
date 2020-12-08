@@ -1,0 +1,277 @@
+\section{Solutions of TISE in One Dimension}
+In one dimension, TISE restricts to
+$$-\frac{\hbar^2}{2m}X^{\prime\prime}+UX=EX$$
+where $E\in\mathbb R$.
+\subsection{Infinte Potential Well}
+Consider the potential
+\footnote{Unorthodox, I know. I have stopped caring.}
+$$U(x)=\begin{cases}
+    0\text{, if $|x|\le a$}\\
+    \infty\text{, if $|x|>a$}
+\end{cases}$$
+For $|x|>a$ we take the solution $X(x)=0$.
+And we also want $X(\pm a)=0$ as we want $X$ to be continuous.
+For $|x|\le a$, we are then aiming at the boundary value problem
+$$-\frac{\hbar^2}{2m}X^{\prime\prime}=EX\iff X^{\prime\prime}+K^2X=0,K^2=\frac{2mE}{\hbar^2}\ge 0$$
+subject to $X(\pm a)=0$.
+This is known to have the general solution $X(x)=A\sin(Kx)+B\cos(Kx)$ for constants $A,B$.
+The boundary conditions then require either $A=0$ and $K=n\pi/2a$ for $n=1,3,5,\ldots$ or $B=0$ and $K=n\pi/2a$ with $n=2,4,6,\ldots$.
+So the allowed values of the energy would be
+$$E_n=\frac{\hbar^2\pi^2}{8ma^2}n^2,n=1,2,3,\ldots$$
+The lowest positive energy (aka ground state energy) is then $E_1=\hbar^2\pi^2/(8ma^2)$.
+The solutions are
+$$X_n(x)=\frac{1}{\sqrt{a}}\begin{cases}
+    \cos(n\pi x/(2a))\text{, for $n=1,3,5,\ldots$}\\
+    \sin(n\pi x/(2a))\text{, for $n=2,4,6,\ldots$}
+\end{cases}$$
+where the factor is obtained from the assumption that $X_n$ is normalised.
+I am too lazy to plot the functions, but whoever read this are encouraged to plot a few of these states.
+Without plotting, however, one can immediately realise that when $n$ is large, $X$ tends to fluctuate a lot.
+The solution also allows us to draw the analogy between these solutions and standing waves with two endpoints fixed at $\pm a$.
+Also, $X_n(-x)=(-1)^{n+1}X_n(x)$, so $X_n$ is either even or odd.
+This is actually a general feature of the eigenfunctions of the Hamiltonian $\hat{H}$.
+\begin{proposition}
+    If $U$ is even and the energy spectrum is non-degenerate (i.e. we require $E_1<E_2<\cdots$), then each eigenfunction is either even or odd.
+\end{proposition}
+\begin{proof}
+    If $U$ is even then TISE is reflection invariant, so $x\mapsto X(-x)$ is also a solution.
+    But it also has energy $E$, so $X(-x)=AX(x)$ where $A$ is a constant.
+    But then $X(x)=X(-(-x))=AX(-x)=A^2X(x)$, so $A=\pm 1$ as $X$ is not identically zero.
+\end{proof}
+\subsection{Finite Potential Well}
+We consider the potential of the form
+$$U(x)=\begin{cases}
+    0\text{, if $|x|\le a$}\\
+    U_0\text{, if $|x|>a$}
+\end{cases}$$
+where $U_0>0$.
+We only consider the case $E<U_0$.
+The other case will be dealt with later.
+Also we only look for even $X$.
+We define the nonnegative real quantities
+$$K=\sqrt{\frac{2mE}{\hbar^2}},\kappa=\sqrt{\frac{2m(U_0-E)}{\hbar^2}}$$
+For $|x|\le a$, we obtain the general solution $X(x)=A\sin(Kx)+B\cos(Kx)$ for $A,B$ constants.
+We are looking for even states only, so we might as well write $X(x)=A\cos(Kx)$.
+For $|x|>a$, we have $X^{\prime\prime}-\kappa^2X=0$ which has solution $X=Ce^{\kappa x}+De^{-\kappa x}$ for some constants $C,D$.
+But the normalisation condition then tells us $C=0$ for $x>a$ and $D=0$ for $x<-a$.
+Hence
+$$X(x)=\begin{cases}
+    Ce^{\kappa x}\text{, for $x<-a$}\\
+    A\cos(Kx)\text{, for $|x|\le a$}\\
+    De^{-\kappa x}\text{, for $x>a$}
+\end{cases}$$
+The continuity of $X$ and $X^\prime$ that we assumed then yield $K\tan(Ka)=\kappa$.
+But the definition of $K$ and $\kappa$ yields $K\tan(Ka)=\kappa$.
+We also know that $K^2+\kappa^2=2mU_0/\hbar^2$.
+Define $\xi=Ka$ and $\eta=\kappa a$, then the two equations become
+$$\begin{cases}
+    \xi\tan\xi=\eta\\
+    \eta^2+\eta^2=r_0^2
+\end{cases}$$
+where $r_0^2=2a^2mU_0/\hbar^2$.
+By a plot, we know that there are only finitely many solutions $\{\xi_1,\ldots,\xi_p\}$ of $\xi$ with $(n-1)\pi\le\xi_n\le(n-1/2)\pi$ and the allowed energy are of the form
+$$E_n=\frac{\hbar^2}{2ma^2}\xi_n^2,n=1,\ldots,r$$
+As $U_0\to\infty$, we can get $r_0\to\infty$, so $p\to\infty$.
+And the allowed energy would be
+$$E_n=\frac{\hbar^2}{2ma^2}\xi_n^2=\frac{\hbar^2(2n-1)^2}{2ma^2}\pi^2$$
+which is consistent with our result on infinite well.
+Of course we can determine all the eigenfunctions as we have enough number of conditions on the breaking points and the normalisation condition.
+One can also show by some calculation that the eigenfunctions also go to the eigenfunctions of the infinite well solution as $U_0\to\infty$.
+\subsection{Free Particle}
+If we require that
+$$\int_{-\infty}^\infty |X(x)|^2\,\mathrm dx=N\in\mathbb R_+$$
+then necessarily
+$$\lim_{R\to\infty}\int_{|x|>R}|X(x)|^2\,\mathrm dx=0$$
+Returning to our TISE $X^{\prime\prime}+K^2X(x)=0$ where $K=\sqrt{2mE/\hbar^2}$ which has solutions in the form $X_K(x)=Ae^{iKx}$.
+This is obviously a continuous spectrum of solutions (corresponding to different values of $E$).
+They gives the solutions $\psi_K(x,t)=X_k(x)e^{-i\hbar K^2t/(2m)}$.
+But they are not in general normalisable!
+Indeed,
+$$\int_{\mathbb R}|\psi_K(x,t)|^2\,\mathrm dx=\int_{\mathbb R}|X_K(x,t)|^2\,\mathrm dx=|A|^2\int_{\mathbb R}\mathrm dx=\infty$$
+unless $A=0$.
+The workaround is to consider the integral superposition
+$$\psi(x,t)=\int_{\mathbb R}A(K)\psi_K(x,t)\,\mathrm dK=\int_{\mathbb R}A(K)e^{iKx}e^{-i\hbar K^2t/(2m)}\,\mathrm dK$$
+and choose $A$ that decreases fast enough as $K\to\infty$ so that $\psi$ is well-defined and normalisable.
+A typical choice is the Gaussian wavepackage
+$$A(K)=\exp\left( -\frac{\sigma}{2}(K-K_0)^2 \right)$$
+where $\sigma>0$.
+So using this we can write
+$$\psi(x,t)=\int_{\mathbb R}\exp F(K)\,\mathrm dK$$
+where
+\begin{align*}
+    F(K)&=-\frac{\sigma}{2}(K-K_0)^2+i\left(Kx-\frac{\hbar K^2}{2m}t\right)\\
+    &=-\frac{1}{2}\left( \sigma+\frac{i\hbar t}{m} \right)K^2+(K_0\sigma+ix)K-\frac{\sigma}{2}K_0^2\\
+    &=-\frac{\alpha}{2}\left( K-\frac{\beta}{\alpha} \right)^2+\frac{\beta^2}{2\alpha}+\delta,\alpha=\sigma+\frac{i\hbar t}{m},\beta=K_0\sigma+ix,\delta=-\frac{\sigma}{2}K_0^2
+\end{align*}
+Therefore,
+\begin{align*}
+    \psi(x,t)(x,t)&=\exp\left( \frac{\beta^2}{2\alpha}+\delta \right)\int_{-\infty}^\infty\exp\left( -\frac{\alpha}{2}\left( K-\frac{\beta}{\alpha} \right)^2 \right)\,\mathrm dK\\
+    &=\exp\left( \frac{\beta^2}{2\alpha}+\delta \right)\int_{-\infty-i\nu}^{\infty-i\nu}\exp\left( -\frac{\alpha}{2}\tilde{K}^2 \right)\,\mathrm d\tilde{K},\tilde{K}=K-\frac{\beta}{\alpha},\nu=\operatorname{Im}\frac{\beta}{\alpha}\\
+    &=\sqrt{\frac{2\pi}{\alpha}}\exp\left( \frac{\beta^2}{2\alpha}+\delta \right)
+\end{align*}
+I know the last step is staggering.
+It's ok, you are stong enough to handle these traumas in your life.
+Anyways, putting everything back gives
+$$\psi(x,t)=\sqrt{\frac{2\pi}{\alpha}}\exp\left( -\frac{\sigma(x-\hbar K_0t/m)^2}{2(\sigma^2+\hbar^2t^2/m^2)} \right)$$
+And (with the help of God) we can obtain the probability density
+$$\rho(x,t)=\frac{C}{\sqrt{\sigma^2+\hbar^2t^2/m^2}}\exp\left( -\frac{\sigma(x-\hbar K_0t/m)^2}{\sigma^2+\hbar^2t^2/m^2} \right)$$
+where $C$ is a normalisation constant, which can be determined by more calculation:
+$$\int_{-\infty}^\infty\rho(x,t)\,\mathrm dx=1\implies C=\sqrt{\frac{\sigma}{\pi}}$$
+Now, by a little calculation we obtain the mean $\langle x\rangle=\hbar K_0t/m$.
+We write $v=\hbar K_0/m$ as an analogy of velocity.
+The standard deviation is
+$$\Delta x=\sqrt{\langle x^2\rangle-\langle x\rangle^2}=\sqrt{\frac{1}{2}\left( \sigma+\frac{\hbar^2t^2}{m^2\sigma} \right)}$$
+which increases as $t\to\infty$, therefore the distribution is more spreaded out as $t\to\infty$.\\
+Back to $\psi_K(x,t)=Ae^{iKx}e^{-i\hbar K^2t/(2m)}$, which as one can verify has standard deviation $\Delta x=\infty$ on position and $\Delta p=0$ on momentum since the momentum is just $p=\hbar K$.
+These whole $\Delta x,\Delta p$ business will be dealt with later when we get to Heisenberg's Uncertainty Principle.
+In fact, it is possible to show that the Gaussian wavepackage minimises uncertainty.
+Now $\rho_K(x,t)=|A(K)|^2$ is then interpreted as the constant average density of a particle.
+The probability current is
+$$J_K(x,t)=-\frac{i\hbar}{2m}\left( \psi_K^*\frac{\partial\psi_K}{\partial x}-\psi_K\frac{\partial\psi_K^*}{\partial x} \right)=|A|^2\frac{\hbar K}{m}=|A|^2\frac{p}{m}$$
+This is basically the product of the average density and velocity, which can be interpreted as the average flux of particles.
+In some way, we are interpreting the state as a beam of particles where $A$ relates to the beam density.
+\subsection{Scattering States}
+Consider $U_0>0$ and
+$$U(x)=\begin{cases}
+    U_0\text{, for $x\in (0,a)$}\\
+    0\text{, otherwise}
+\end{cases}$$
+Define
+$$R=\lim_{t\to\infty}\int_{-\infty}^0|\psi(x,t)|^2\,\mathrm dx,T=\lim_{t\to\infty}\int_0^\infty|\psi(x,t)^2|\,\mathrm dx$$
+If we interpret the system as a wave moving towards $x=0$ being scattered (partially reflected and partially transmitted), then $R$ can be seens as the reflection probability and $T$ the transmission probability.
+If $\psi$ is normalised, then we have $R+T=1$.
+Take the solutions $\psi_K(x,t)=X_K(x)e^{-i\hbar K^2t/(2m)}$ where $X_K(x)=Ae^{iKx}$.
+\subsubsection{Scattering off a Potential Step}
+Take $a\to\infty$ gives the potential
+$$U(x)=\begin{cases}
+    0\text{, for $x\le 0$}\\
+    U_0\text{, for $x>0$}
+\end{cases}$$
+Restate the TISE
+$$-\frac{\hbar^2}{2m}X^{\prime\prime}+UX=EX$$
+First, we consider the case $E>U_0$.
+For $x\le 0$, if we throw in $K=\sqrt{2mE/\hbar^2}$ the system gives
+$$X_K(x)=X_K^{(+)}(x)+X_K^{(-)}(x),X_K^{(+)}(x)=Ae^{iKx},X_K^{(-)}(x)=Be^{-iKx}$$
+where $A,B$ are constants.
+Then we interpret $X_K^{(+)}$ as the beam of incident particles from $x=-\infty$ with $p=\hbar K$ and probability current $J_K^{(+)}=|A|^2\hbar K/m$.
+The $X_K^{(-)}$ is correspondingly interpreted as the beam of reflected particles going towards $x=-\infty$ with $p=-\hbar k$ and $J_K^{(-)}=-|B|^2\hbar K/m$.
+Now for $x>0$ we have $X^{\prime\prime}+\tilde{K}^2X=0$ where $\tilde{K}=\sqrt{2m(E-U_0)/\hbar^2}$ which is well-defined as we assumed $U_0<E$.
+This yield the solutions
+$$X_{\tilde{K}}=X_{\tilde{K}}^{(+)}+X_{\tilde{K}}^{(+)},X_{\tilde{K}}^{(+)}(x)=Ce^{i\tilde{K}x},X_{\tilde{K}}^{(-)}(x)=De^{-i\tilde{K}x}$$
+Again $X_{\tilde{K}}^{(+)}$ is the beam of transmitted particles moving towards $x=+\infty$ with $p=\hbar\tilde{K}$ and $X_{\tilde{K}}^{(-)}$ is the beam if incident particles from $x=+\infty$ with $p=-\hbar \tilde{K}$.
+We only want to consider the scattering problem, so we can set $D=0$.
+Continuity of $X$ at $x=0$ gives $A+B=C$ and continuity of $X^\prime$ at $x=0$ gives $iKA-iKB=i\tilde{K}C$, therefore
+$$B=\frac{K-\tilde{K}}{K+\tilde{K}}A,C=\frac{2K}{K+\tilde{K}}A$$
+So the incident, reflective and transmitted probability current are
+$$J_{\rm inc}=\frac{\hbar K}{m}|A|^2,J_{\rm ref}=\frac{\hbar K}{m}\left( \frac{K-\tilde{K}}{K+\tilde{K}} \right)^2|A|^2,J_{\rm tr}=\frac{\hbar \tilde{K}}{m}\frac{4K^2}{(K+\tilde{K})^2}|A|^2$$
+Hence
+$$R=\frac{J_{\rm ref}}{J_{\rm inc}}=\left( \frac{K-\tilde{K}}{K+\tilde{K}} \right)^2,T=\frac{J_{\rm tr}}{J_{\rm inc}}=\frac{4K\tilde{K}}{(K+\tilde{K})^2}$$
+Easy to verify that $R+T=1$ and when $E\to \infty$ we have $K-\tilde{K}\to 0$ which implies $R\to 0,T\to 1$, which corresponds to the classical case.\\
+For the case $E<U_0$, the equations become
+$$\begin{cases}
+    X^{\prime\prime}+K^2X=0\implies X=Ae^{iKx}+Be^{-iKx}\text{, for $x\le 0$}\\
+    X^{\prime\prime}-\kappa^2X=0\implies X=Ge^{\kappa x}+Fe^{-\kappa x}\text{, for $x>0$}
+\end{cases}$$
+where as you expect,
+$$K=\sqrt{\frac{2mE}{\hbar^2}},\kappa=\sqrt{\frac{2m(U_0-E)}{\hbar^2}}$$
+We have $G=0$ because we expect the wavefunction to not blow up at $+\infty$.
+Hence
+$$X(x)=\begin{cases}
+    Ae^{iKx}+B^{-iKx}\text{, for $x\le 0$}\\
+    Fe^{-\kappa x}\text{, for $x>0$}
+\end{cases}$$
+Then the assumed continuity of $X,X^\prime$ at $0$ gives
+$$B=\frac{iK+\kappa}{iK-\kappa}A,F=\frac{2iK}{iK-\kappa}A$$
+So
+$$j_{\rm tr}(x)=0,j_{\rm inc}=\frac{\hbar K}{m}|A|^2,j_{\rm ref}=\frac{\hbar K}{m}|B|^2=\frac{\hbar K}{m}|A|^2$$
+Hence $R=1$ and $T=0$ just as we expect it.
+\subsubsection{Scattering off a Potential Barrier}
+Consider $a\in (0,\infty)$, so
+$$U(x)=\begin{cases}
+    U_0\text{, for $x\in (0,a)$}\\
+    0\text{, otherwise}
+\end{cases}$$
+We deal with the $E\le U_0$ case first.
+We define
+$$K=\sqrt{\frac{2mE}{\hbar^2}},\bar{K}=\sqrt{\frac{2m(U_0-E)}{\hbar^2}}$$
+Therefore
+$$\begin{cases}
+    X^{\prime\prime}(x)-\bar{K}^2X(x)=0\text{, for $x\in (0,a)$}\\
+    X^{\prime\prime}(x)+K^2X(x)=0\text{, otherwise}
+\end{cases}$$
+which gives the general (normalised) solution
+$$X(x)=\begin{cases}
+    e^{iKx}+Ae^{-iKx}\text{, for $x\le 0$}\\
+    Be^{-\bar{K}x}+Ce^{\bar{K}x}\text{, for $x\in (0,a)$}\\
+    De^{iKx}+Fe^{-iKx}\text{, for $x\ge a$}
+\end{cases}$$
+We can set $F=0$ since we only consider the case where the incident beam is from $x=-\infty$.
+By continuity of $X,X^\prime$ again we get
+$$D=\frac{-4i\bar{K}K}{(\bar{K}-iK)^2e^{(\bar{K}+iK)a}-(\bar{K}+iK)^2e^{-(\bar{K}-iK)a}}$$
+In classical dynamics, the particle can never pass the barrier.
+But our result just shows that this is not in general the case, since
+$$T=\frac{j_{\rm tr}}{j_{\rm inc}}=\frac{\hbar K|D|^2/m}{\hbar K/m}=|D|^2=\frac{4K^2\bar{K}^2}{(K^2+\bar{K}^2)^2\sinh^2(\bar{K}a)+4K^2\bar{K}^2}\neq 0$$
+In particular, for $\bar{K}a>>1$, either $a>>1$ or $U_0>>E$ and
+$$T\sim\frac{16K^2\bar{K}^2}{(K^2+\bar{K}^2)^2}e^{-2\bar{K}a}$$
+So if the barrier is very wide or very tall, $T$ goes exponentially to $0$.
+When $E<U_0$ but a beam of particles is transmitted, this phenomenon is called quantum tunneling.
+\subsubsection{Physical Examples of Quantum Tunneling}
+\begin{example}[Cold Emission]
+    When light irradiates a metal surface, electrons are emitted when $\hbar\omega>W$ where $\omega$ is the angular frequency of photons and $W$ is a constant (called the work function) associated with the metal.
+    An electron would be facing some sort of triangular barrier.
+    In addition to the potential step at $x=a$ because of the work function $W$, suppose $\xi$ is the external electric field, then the resulting potential induced by the Lorentz force is $V_{\rm Lorentz}(x)=-e\xi(x-a)$.
+    Their superposition would be a triangular barrier with cliff at $x=a$.
+    So even for an electron with energy less than $W$, it can go to the part of the potential where it is low enough via quantum tunneling and excite from there.
+    This is knowns as cold emission in photoelectric effect.
+\end{example}
+\begin{example}[Radioactive Decay]
+    Consider the decay $\text{N}_{Z}^A\to \text{M}_{Z-2}^{A-4}+\text{He}_2^4$.
+    For the $\alpha$ particle $\text{He}_2^4$, we want to know the potential field it is in.
+    Indeed, if we let $r$ to be the distant between this $\alpha$ particle and the center of the nucleus, then $U(r)$ will begin negative near $0$ because of the attractive nuclear force and eventually go up positive again after $r$ gets large enough since the repulsive Coulumb force comes in play.
+    Eventually, it goes down (but keep positive) and tends to $0$ as $r\to\infty$.
+    This is known as the Gamow model.
+    The curve certainly looks like a potential barrier.
+    If we let $T$ be the transmission coefficient, then the half-life of this decay is actually proportional to $T^{-1}$.
+\end{example}
+\subsection{The Harmonic Oscillator}
+The potential of the harmonic oscillator can be written as $U(x)=Kx^2/2=m\omega^2x^2/2$ where $K>0, \omega=\sqrt{k/m}>0$.
+In classical mechanics, Newton's Second Law gives the equation $\ddot{x}=-\omega^2x$ which has solutions $x=A\sin(\omega t)+B\cos(\omega t)$ where $A,B$ are constants.
+So the particle oscillates about $x=0$ with period $2\pi/\omega$.\\
+In quantum mechanics, this gives the TISE
+$$-\frac{\hbar^2}{2m}\frac{\mathrm d^2X}{\mathrm dx^2}+\frac{1}{2}m\omega^2x^2X(x)=EX(x)$$
+where we expect to find a discrete set of normalisable eigenfunctions by looking at the shape of the potential.
+As seen earlier, we can guarantee to find eigenfunctions that are either even or odd.
+Write $\xi^2=m\omega x^2/\hbar$ and $\mathcal E=2E/(\hbar\omega)$, then this change of variables yield
+$$-\frac{\mathrm d^2X}{\mathrm d\xi^2}+\xi^2X(\xi)=\mathcal EX(\xi)$$
+For $\mathcal E=1$ it reduces to $-X^{\prime\prime}(\xi)+\xi^2X=X$.
+Educated guess reveals that $X_0=A\exp(-\xi^2/2)$ is a family of solutions which is normalisable when $A\neq 0$.
+This gives one pair of eigenvalue $E_0=\hbar\omega/2$ and eigenfunction $X_0(x)=A\exp(-m\omega x^2/(2\hbar))$ for $A\neq 0$.\\
+For the general case, set $X(\xi)=f(\xi)\exp(-\xi^2/2)$, which transforms the equation into
+$$-\frac{\mathrm d^2f}{\mathrm d\xi^2}+2\xi\frac{\mathrm df}{\mathrm d\xi}+(1-\mathcal E)f=0$$
+Now we are desperate, so the obvious thing to do is to plug in the power series solution $f(\xi)=\sum_na_n\xi^n$ which gives
+$$0=\sum_{n=0}^\infty [(n+1)(n+2)a_{n+2}-2na_n+(\mathcal E-1)a_n]\xi^n$$
+which gives the recurrence
+$$a_{n+2}=\frac{2n-\mathcal E+1}{(n+1)(n+2)}a_n$$
+The recurrence steps by $2$, so it has even or odd solutions.
+Here we need to prove an important claim
+\begin{claim}
+    Suppose the series does not terminate then $X(\xi)=f(\xi)\exp(-\xi^2/2)$ is not normalisable.
+\end{claim}
+\begin{proof}
+    $a_{n+2}/a_n\sim 2/n$ as $n\to\infty$, which means that $f(\xi)\sim\exp(\xi^2)$, hence $X$ is not normalisable.
+\end{proof}
+Therefore, for a normalisable solution to exist, $\mathcal E$ must be an odd positive integer, so we get the eigenvalues and eigenfunctions
+$$E_N=\left( N+\frac{1}{2} \right)\hbar\omega,X_N(x)=f_N\left( \sqrt{\frac{m\omega}{\hbar}} \right)\exp\left( -\frac{m\omega x^2}{2\hbar} \right)$$
+where $f_N$ are the respective polynomials that yield from the series solution as the choice of $\mathcal E$ makes it terminate.
+These are called Hermite polynomials which, as one can verify, satisfies $f_N(-\xi)=(-1)^Nf_N(\xi)$ and
+$$f_N(\xi)=(-1)^n\exp(\xi^2)\frac{\mathrm d^n}{\mathrm d\xi^n}\exp(-\xi^2)$$
+We've got nothing better to do so why not calculate some of them.
+\begin{center}
+    \begin{tabular}{c|c|c|c}
+        $N$&$f_N(\xi)$&$E_N$&$X_N(\xi)$\\ \hline
+        $0$&$1$&$\hbar\omega/2$&$\exp(-\xi^2/2)$\\
+        $1$&$\xi$&$3\hbar\omega/2$&$\xi\exp(-\xi^2/2)$\\
+        $2$&$1-2\xi^2$&$5\hbar\omega/2$&$(1-2\xi^2)\exp(-\xi^2/2)$\\
+        $3$&$\xi-2\xi^3/3$&$7\hbar\omega/2$&$(\xi-2\xi^3/3)\exp(-\xi^2/2)$
+    \end{tabular}
+\end{center}

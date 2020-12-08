@@ -1,0 +1,122 @@
+\section{Historical Introduction}
+\subsection{Black-body radiation}
+The birth of quantum mechanics finds its way through its ability to explain phenomena that cannot be explained in classical physics.
+The first example of which is the black-body radiation.
+\begin{definition}
+    A black body is a totally absorbing heated body at thermal equilibrium $T$.
+\end{definition}
+What people towards the end of 19th century intended to measure was the energy density of light emitted by a black body at this equilibrium temperature $\rho(\nu,T)$ where $\nu$ is the frequency of the light.
+Experimentally, the graph of $\rho$ against $\nu$ fixing $T$ always looks like a curve that grows parabolically at the beginning near $0$ but decreases exponentially after some point.\\
+Many physicists tried to model this curve.
+Rayleight (1900) made the first attempt in the problem.
+He assumed that the black body is a cobe with side length $L$.
+The radiation is taken as a superposition of plane waves in the form $e^{i\underline{k}\cdot\underline{x}}$ where $\underline{k}$ is the called the wavenumber of the plane wave.
+Obviously, we have $|\underline{k}|=2\pi/\lambda$, so $\nu=|\underline{k}|x/(2\pi)$.\\
+However, we cannot take the wavenumbers arbitarily, as we require the wave to vanish at the boundary to make a thermal equilibrium.
+With this condition, we obtain
+$$\underline{k}=\frac{2\pi}{L}\underline{n},\underline{n}\in\mathbb Z^3\implies \nu=\frac{|\underline{n}|c}{L}$$
+Let $N(\nu)$ be the number of modes (possible values of $\underline{n}$) between $\nu$ and $[\nu+\mathrm d\nu]$.
+We then obtain
+$$N(\nu)\,\mathrm d\nu=2\times 4\pi|\underline{n}|^2\,\mathrm d|\underline{n}|=8\pi\left(\frac{L}{c}\right)^3\nu^2\,\mathrm d\nu$$
+We have, let $\langle E(\nu,T)\rangle$ be the average energy of the modes,
+$$\rho(\nu,T)=N(\nu)\frac{\langle E(\nu,T)\rangle}{L^3}$$
+In classical statistical dynamics, $\langle E\rangle$ is directly proportional to $T$ and does not depend on $\nu$.
+So $\langle E\rangle=k_BT$ wherre $k_B$ is the Boltzmann constant.
+Where does it come from?
+It comes from the fact that the probability for a plane wave to have energy $E$ is
+$$\mathbb P(E)\propto e^{-E/(k_BT)}\implies \langle E\rangle=\frac{\int_0^\infty Ee^{-E/(k_BT)}\,\mathrm dE}{\int_0^\infty e^{-E/(k_BT)}\,\mathrm dE}=k_BT$$
+However, this shall yield us the energy density
+$$\rho(\nu,T)=\frac{8\pi k_B}{c^3}T\nu^2$$
+which is obviously NOT compliant with experimental results except for small frequencies.
+This is known as the ultraviolet catastrophe, getting its name due to the fact that this model stops working pass the ultraviolt frequencies.\\
+Planck (1905) found a workaround of the problem.
+He postulated that the energy is discrete instead of continuous, so $E=nh\nu$ for nonnegative integer $n$ and constant $h$ (known as the planck constant).
+This is known as a quantisation of the energy of radiation.\\
+In this case, we obtain
+$$\langle E\rangle=\frac{\sum_{n=0}^\infty nh\nu e^{-nh\nu/(k_BT)}}{\sum_{n=0}^\infty e^{-nh\nu/(k_BT)}}=\frac{h\nu}{e^{h\nu/(k_BT)}-1}$$
+which is fascinatingly different from the continuous case.
+\footnote{Well, not really.}
+In this case, we obtain
+$$\rho(\nu,T)=\frac{8\pi h}{c^3}\frac{\nu^3}{e^{h\nu/(k_BT)}-1}$$
+which is surprisingly fitting the experimental data.
+This makes people start thinking about taking certain physical quantities as discrete objects.
+\subsection{Photoelectric Effect}
+A long time ago, people have observed the emission of electrons when light is shine on metal surfaces.
+In a classical point of view, if the intensity $I$ of the incident light is high enough, the radiation would give enough energy for electrons to emit.
+However, this is not what happened in an experiment.
+If the frequency is too low, no matter how intense the radiation is, there can be no emission of electron.
+Even more puzzling, the rate of the emission of the electrons is not growing with the frequency of the light, but instead with intensity of the light.\\
+Einstein (1905) took up the idea of Planck ad came up with the idea of viewing light as light quanta (photons), which are particles.
+And each of those particles carries energy $E=h\nu=\hbar\omega$ where $\hbar=h/(2\pi)$ is the reduced Planck constant and $\omega=2\pi\nu$ is the angular frequency.
+Photoelectric effect happens, as Einstein interpreted it, when an electron absorbs a photon with large enough energy to make it escape its original structure.\\
+So the energy of the emitted electron is bounded by $E\le \hbar\omega-\phi$ where $\phi$ is the ``work function'' that denotes the minimal amount of energy of a single photon spent to trigger photoelectric effect.
+With this theory, one can easily explain the observations of photoelectric effect.\\
+This theory of viewing light as particles got developed further and helped explaining more phenomena.
+In 1923, an experiment known as Compton scattering was conducted by Compton.
+In this experiment, Compton used X-Rays to scatter off free electrons.
+Classically, if the light is simply a wave, then there will be a re-radiation of light by electrons with a certain angular distribution, which one can obtain as $I(\nu)\propto(1+\cos^2\theta)$.
+So one could expect to find a single peak at $\nu_0$ in the graph of $I$ against $\nu$.\\
+However, what is observed experimentally, there was a second peak $\nu'$ such that $|\nu_0-\nu'|$ is dependent on $\theta$.\\
+In quantum mechanics, if we take lights as particles, as we did in Dynamics \& Relativity, it can be explained.
+Assume the deflected electron and photon (whose energy is $E'=\hbar\omega'$) make angles of $\alpha$ $\theta$ to the original path, then by using energy-momentum conservation one can obtain
+$$\frac{1}{\omega'}=\frac{1}{\omega}+\frac{\hbar}{mc}(1-\cos\theta)$$
+which is consistent with the experimental result.
+This also shows that $\hbar$ actually measures the strength of quantum effect.
+\subsection{Particles as Waves}
+In previous sections, we found that light, which always manifest itself as a wave, can be interpreted as particles too.
+A natural thought from that is then:
+Can we interpret particles as waves?\\
+In 1923, de Broglie postulated that for any particle of mass $m$, it can be associated with a wave with angular frequency $\omega=E/\hbar$ and $\underline{k}=\underline{p}/\hbar$.
+People then attempt to conduct experiments to verify this theory.
+For example, one can do a diffraction experiment with particle beams.
+But experiments of this are usually complicated to administrate as the wavelength of particles can be very small.
+But some physicists managed to get it done on small particles like electrons, which does yield a typical diffraction pattern and the calculated wavelength is complicant with de Broglie's theory.
+So we can interpret particles as waves.\\
+But the electron can't possibly split in space, yet even we pass the electron one-by-one, the same phenomenon happens.
+This can be explained using a probabilistic interpretation of the whole thing, which we will cover later.
+\subsection{Atomic Models}
+In 1897, J. J. Thompson made the first atomic model by viewing atoms as a cloud of positive charges that enclose a number of electrons.
+To verify (or disprove) this model, Rutherfold suggested Geiger and Marsden to conduct a scattering experiment.
+They took a beam of alpha particles and shine it on a piece of gold foil.
+If the model of J. J. Thompson was correct, then the alpha particles should not be deflected by any large angle, but should merely pass through the foil with very small deflection.
+However, in the experiment, many deflections with very large angle were observed, and some were even scattered back.\\
+After this experiment, Rutherfold came up with another model, which postulates that electrons are orbitting a common nucleus with positive charge.
+This explains the phenomenon that was observed in the scattering experiment.
+But there are several problems with it:
+First, why is there not any radiation from the electrons resulting from the centripetal acceleration?
+This radiation should make the electron's energy decrease and eventually collapse, but in reality no such thing happen.
+Secondly, why is there discrete instead of continuous frequencies in the atomic spectra?
+That is, when an excited atom de-excite, the angular frequencies of light emitted (the line spectra) are discrete and satisfy
+$$\omega_{mn}=2\pi cR_0\left( \frac{1}{n^2}-\frac{1}{m^2} \right)$$
+for $m>n$.
+Here $R_0$ is a constant known as the Rydberg constant, which has order of magnitude $10^7{\rm m^{-1}}$.\\
+These questions prompted another reformulation of the atomic model by Bohr (1913).
+He hypothesise that the electron orbits are quantised so that the orbital angular momentum $L$ satisfies $L=\hbar n$ for $n\in\mathbb N$.
+It sounds out of nowhere, but it works.
+There is an explanation of it by taking electrons as waves.
+Then, the wavenumber of an electron is just $\underline{k}=\underline{p}/\hbar$ so $\lambda=2\pi\hbar/|\underline{p}|$.
+If we imagine the electron in the orbit of radius $r$, then we can take it as a stationary wave on this circumference, so
+$$2\pi r=n\lambda=n\frac{2\pi\hbar}{|\underline{p}|}\implies L=|\underline{r}||\underline{p}|=\hbar n$$
+which is just Bohr's hypothesis.\\
+What is the consequences of this formulation of atomic model?
+We have, by Newton's second law,
+$$\frac{e^2}{4\pi\epsilon_0}\frac{1}{r^2}=m_e\frac{v^2}{r}$$
+in the $\hat{r}$ component.
+Hence by $L=\hbar n$, the velocity and radius are quantized as
+$$v_n=\frac{n\hbar}{m_e r_n},r_n=n^2\left( \frac{4\pi\epsilon_0}{m_ee^2}\hbar^2 \right)$$
+$a_0=r_1$ is called the Bohr radius.
+The energy of the electron is also quantised.
+$$E_n=\frac{1}{2}m_ev_n^2-\frac{e^2}{4\pi\epsilon_0}\frac{1}{r_n}=-\frac{e^2}{8\pi\epsilon_0a_0}\frac{1}{n^2}=\frac{E_1}{n^2}$$
+We have $E_1=-13.6{\rm eV}$ upon calculation.
+For an electron with $n>1$, we say it is excited as such states can be created by exciting (giving energy to, usually via photon) the electron in ground state, while an electron with $n=0$ is said to be in ground state.\\
+In this model, an de-excitation from state $m$ to $n$ would then give light with angular frequency
+$$\omega_{mn}=(E_m-E_n)\frac{1}{\hbar}=2\pi c\frac{m_ec}{2\hbar}\left(\frac{e^2}{4\pi\epsilon_0\hbar c}\right)^2\left( \frac{1}{n^2}-\frac{1}{m^2} \right)$$
+which gives a prediction of $R_0$ very close to the experiment.
+In particular, calculation reveals that $\omega_{n+1,n}\sim v_n/r_n$ as $n\to\infty$, which can be viewed as a kind of classical limit.
+%$$\omega_{n+1,n}=\frac{m_e^3e^4}{64\pi^4\epsilon_0^2\hbar^3}\left( \frac{1}{n^2}-\frac{1}{(n+1)^2} \right)\sim\frac{m_e^3e^4}{32\pi^4\epsilon_0^2\hbar^3}\frac{1}{n^3}=\frac{v_n}{r_n}$$
+%as $n\to\infty$.
+%This is exactly the classical case.
+\footnote{However, $\omega_{n+2,n}$ does not tend to this limit when $n\to\infty$. It does not tend to any well-known classical limit.}
+\subsection{Conclusion}
+Quantum mechanics is a new framework of explaining physical phenomena.
+It may come in counter-intuitive as we always think in the classical way, but it has an undeniable predictivity.

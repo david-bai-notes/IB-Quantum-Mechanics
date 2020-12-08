@@ -1,0 +1,273 @@
+\section{Axioms for Quantum Mechanics}
+Now we start to try and make the theory more mathematical.
+\subsection{Vector Space and Inner Product}
+As we have seen, we can collect $0$ and the set of possible wavefunctions (for fixed time $t$) as a vector space $\mathcal H$ which is a subspace of $L^2(\mathbb R^3,\mathbb C)$.
+Linear maps involved are operators and the inner product is what we have seen earlier:
+\begin{definition}
+    The inner product of two wavefunctions $\psi,\phi$ is defined by
+    $$(\psi,\phi)=\int_{\mathbb R^3}\psi^*\phi\,\mathrm dV$$
+\end{definition}
+\begin{lemma}
+    If $\psi,\phi\in L^2(\mathbb R^3,\mathbb C)$, then $(\psi,\phi)$ exists.
+\end{lemma}
+\begin{proof}
+    Cauchy-Schwartz.
+\end{proof}
+\begin{proposition}
+    1. $(\psi,\phi)=(\phi,\psi)^*$\\
+    2. $(\psi,\lambda_1\phi_1+\lambda_2\phi_2)=\lambda_1(\psi,\phi_1)+\lambda_2(\psi,\phi_2)$ and $(\mu_1\psi_1+\mu_2\psi_2,\phi)=\mu_1^*(\psi_1,\phi)+\mu_2^*(\psi_2,\phi)$.\\
+    3. $( \psi,\psi)\ge 0$ and equals $0$ iff $\psi=0$.
+\end{proposition}
+\begin{proof}
+    Obvious.
+\end{proof}
+\begin{definition}
+    A wavefunction $\psi$ is normalised if $(\psi,\psi)=1$.
+    If $(\psi,\phi)=0$ then we say $\psi,\phi$ are orthogonal.
+    A set of wavefunctions $\{\psi_n\}$ is orthogonal if $(\psi_m,\psi_n)=\delta_{mn}$.
+    It is complete if an other wavefunction $\phi$ can be written as
+    $$\phi=\sum_{n=0}^\infty c_n\psi_n$$
+    for some $c_n\in\mathbb C$.
+\end{definition}
+It then follows that
+\begin{proposition}
+    If we have a complete and orthogonal set of wavefunctions $\{\psi_n\}$ and $\phi=\sum_n c_n\psi_n$, then $c_n=(\psi_n,\phi)$.
+\end{proposition}
+\begin{proof}
+    Straight from definition.
+\end{proof}
+The probabilistic interpretation of inner product is that if we take $\phi$ to be the desired outcome of a measurement and $\psi$ is the actual state of the particle at the time of measurement, then $|( \psi,\phi)|^2$ can be taken as the probability of measuring $\phi$ as an outcome, that is the overlap between the two states at time $t$.
+\subsection{Hermitian Operators}
+An operator on $\mathcal H$, the vector space of possible wavefunctions and $0$, is a linear map from $\mathcal H$ to itself (or a vector space containing it).
+\begin{example}
+    Linear differential and translation are operators.
+    We can also have the parity operator $\phi(x)\mapsto\psi(-x)$.
+\end{example}
+\begin{definition}
+    The Hemitian conjugate $\hat{A}^\dagger$ of an operator $\hat{A}$ is an operator such that $(\hat{A}^\dagger\psi_1,\psi_2)=(\psi_1,\hat{A}\psi_2)$ for any $\psi_1,\psi_2\in\mathcal H$.
+\end{definition}
+Consequently, $(a_1\hat{A}_1+a_2\hat{A}_2)^\dagger=a_1^*\hat{A}^\dagger+a_2^*\hat{A}_2^\dagger$ and $(\hat{A}\hat{B})^\dagger=\hat{B}^\dagger\hat{A}^\dagger$.
+\footnote{Yes, we haven't proved the existence and uniqueness of a conjugate. And yes, the lecturer still hasn't proved it.}
+\begin{definition}
+    A Hermitian operator is an operator $\hat{A}$ such that $(\hat{A}\psi_1,\psi_2)=(\psi_1,\hat{A}\psi_2)$.
+\end{definition}
+Equivalently $\hat{A}=\hat{A}^\dagger$.
+\begin{example}
+    Physical quantities (observables) like $\hat{x},\hat{p},\hat{H}$ are Hermitian operators.
+\end{example}
+\begin{theorem}
+    The eigenvalues of Hermitian operators are real.
+\end{theorem}
+\begin{proof}
+    Let $\hat{A}$ be Hermitian and $\psi$ a normalised eigenfunction of it with eigenvalue $a$, that is $\hat{A}\psi=a\psi$.
+    Now
+    \begin{align*}
+        a&=a(\psi,\psi)=( \psi,a\psi)=(\psi,\hat{A}\psi)=( \hat{A}^\dagger\psi,\psi)=(\hat{A}\psi,\psi)\\
+        &=( a\psi,\psi)=a^*(\psi,\psi)\\
+        &=a^*
+    \end{align*}
+    So $a$ has to be real.
+\end{proof}
+\begin{theorem}
+    Let $\hat{A}$ be a Hermitian operator and $\psi_1,\psi_2$ normalised eigenfunctions with different eigenvalues $a_1\neq a_2$, then $\psi_1,\psi_2$ are orthogonal.
+\end{theorem}
+\begin{proof}
+    We have
+    \begin{align*}
+        a_1(\psi_1,\psi_2 )&=a_1^*(\psi_1,\psi_2)=( a_1\psi_1,\psi_2)=( \hat{A}\psi_1,\psi_2)\\
+        &=( \hat{A}^\dagger\psi_1,\psi_2)=(\psi_1,\hat{A}\psi_2)=(\psi_1,a_2\psi_2)\\
+        &=a_2(\psi_1,\psi_2)
+    \end{align*}
+    But $a_1\neq a_2$, so it has to be the case that $(\psi_1,\psi_2)=0$.
+\end{proof}
+\begin{theorem}
+    The set of eigenfunctions, discrete or continous, of any Hermitian operator forms a complete orthogonal set.
+\end{theorem}
+\begin{proof}
+    Haha.
+\end{proof}
+\begin{corollary}
+    Every solution of TDSE can be written as a superposition of the stationary states.
+\end{corollary}
+\begin{proof}
+    The stationary states are eigenfunctions of the Hamiltonian.
+\end{proof}
+\subsection{Quantum Measurements}
+We have a few postulates for quantum mechanics.
+\begin{postulate}
+    1. Any quantum observable $O$ is represented by a Hermitian operator $\hat{O}$.\\
+    2. The possible outcomes of measurement of $O$ are eigenvalues of $\hat{O}$.\\
+    3. if $\hat{O}$ has a discrete set $\{\psi_i\}$ of normalised eigenfunctions with distinct eigenvalues $\{\lambda_i\}$, then the measurement of $O$ on a particle in state $\psi=\sum_ia_i\phi_i$, then the probability of outcome $\lambda$ is $p(\lambda_i)=|a_i|^2$.
+    In particular, if $\psi=\psi_i$, then the measurement is $\lambda_i$ with probability $1$.\\
+    4. If $\{\psi_i\}_{i\in I}$ is a subset of the eigenfunctions with common eigenvalue $\lambda$, then $p(\lambda)=\sum_{i\in I}|a_i|^2$.\\
+    5. (consequence of 3 and 4) $\sum_i|a_i|^2=1$.\\
+    6. (projection postulate, collapse of wavefunction) If $O$ is measured on $\psi$ at time $t$ and outcome of the measure is $\lambda_i$, then the wavefunction instaneously becomes $\psi_1$ at time $t$.\\
+    7. If $\hat{O}$ has an eigenvalue $\lambda$ with eigenfunctions $\{\psi_i\}_{i\in I}$, then if $O$ is measured with outcome $\lambda$ the wavefunction instaneously becomes a superposition of $\{\psi_i\}_{i\in I}$.
+\end{postulate}
+\begin{definition}
+    The projection operator $\hat{p}_i$ sends $\psi=\sum_ja_j\psi_j$ to $a_i\psi_i$.
+\end{definition}
+\subsection{Expected Values}
+Consider the measurement of observable $O$ on state $\psi$ and the corresponding Hermitian operator $\hat{O}$ has a discrete set of eigenfunctions $\{\psi_i\}$ with eigenvalues $\lambda_i$, then $\{\lambda_i\}$ gives us all possible outcomes of measures of $O$ with $p(\lambda_i)=|\langle\psi,\psi_i\rangle|^2$.
+So we can defined\begin{definition}
+    The expected value of $O$ is
+    $$\langle\hat{O}\rangle_\psi=\sum_ip_i\lambda_i=\sum_i|(\psi,\psi_i)|^2\lambda_i=(\psi,\hat{O}\psi)=\int_{\mathbb R^3}\psi^*\hat{O}\psi\,\mathrm dV$$
+\end{definition}
+Then easily $\langle\cdot\rangle_\psi$ is a linear form on the (real) vector space of Hermitian operators on $\mathcal H$.
+\subsection{Commutators}
+\begin{definition}
+    The commutator of two operators $\hat{A},\hat{B}$ is the operator $[\hat{A},\hat{B}]=\hat{A}\hat{B}-\hat{B}\hat{A}$.
+    Correspondingly, the anti-commutator is $\{\hat{A},\hat{B}\}=\hat{A}\hat{B}+\hat{B}\hat{A}$
+\end{definition}
+Easly $[\cdot,\cdot]$ is a antisymmetric and
+$$[\hat{A},\hat{B}\hat{C}]=[\hat{A},\hat{B}]\hat{C}+\hat{B}[\hat{A},\hat{C}],[\hat{A}\hat{B},\hat{C}]=\hat{A}[\hat{B},\hat{C}]+[\hat{A},\hat{C}]\hat{B}$$
+\begin{example}
+    We have $[\hat{x},\hat{p}]=i\hbar\hat{I}$ where $\hat{I}$ is the identity operator.
+\end{example}
+\begin{definition}
+    Two Hemitian operators $\hat{A},\hat{B}$ are simultaneously diagonalisable in $\mathcal H$ if there is a complete basis of joint eigenfunctions $\{\psi_i\}$ with $\hat{A}\psi_i=a_i\psi_i$ and $\hat{B}\psi_i=b_i\psi_i$ for all $i$ where $a_i,b_i$ are the respective eigenvalues.
+\end{definition}
+\begin{theorem}
+    Two Hemitian operators $\hat{A}$ and $\hat{B}$ are simultaneously diagonalisable iff $[\hat{A},\hat{B}]=0$
+\end{theorem}
+\begin{proof}
+    The ``only if'' direction is trivial.
+    Conversely, if $[\hat{A},\hat{B}]=0$, then $\hat{A}\hat{B}=\hat{B}\hat{A}$, so $A(B\psi_i)=a_i(\hat{B}\psi_i)$ for all $i$.
+    This means that $\hat{B}$ maps any eigenspace $E$ of $\hat{A}$ to itself.
+    But $\hat{B}$ is also Hermitian on $E$, so we can have an eigenspace $E$ in which $\hat{B}$ acts diagonally.
+    Collect them together gives the desired complete set of basis.
+\end{proof}
+\subsection{Heisenberg's Uncertainty Principle}
+\begin{definition}
+    The uncertainty in mass of $A$ on a state $\psi$ is defined as
+    $$(\Delta_\psi A)^2=\langle (\hat{A}-\langle\hat{A}\rangle_\psi\hat{I})^2\rangle_\psi=\langle\hat{A}^2\rangle_\psi-(\langle\hat{A}\rangle_\psi)^2$$
+    where $\hat{I}$ is the identity operator.
+\end{definition}
+\begin{lemma}
+    $(\Delta_\psi A)^2\ge 0$ and $\Delta_\psi A=0$ iff $\psi$ is an eigenfunction of $\hat{A}$.
+\end{lemma}
+\begin{proof}
+    Write $\phi=(\hat{A}-\langle\hat{A}\rangle_\psi\hat{I})\psi$, then
+    \begin{align*}
+        (\Delta_\psi A)^2&=\langle (\hat{A}-\langle\hat{A}\rangle_\psi\hat{I})^2\rangle_\psi\\
+        &=((\hat{A}-\langle\hat{A}\rangle_\psi\hat{I})\psi,(\hat{A}-\langle\hat{A}\rangle_\psi\hat{I})\psi)\\
+        &=(\phi,\phi)\ge 0
+    \end{align*}
+    and equality holds iff $\phi=0$ which happens iff $\phi=0$, but this is just another way of saying $\phi$ is an eigenfunction of $\hat{A}$.
+\end{proof}
+\begin{theorem}[Schwartz Inequality]
+    If $\phi,\psi$ are any two normalisable wavefunctions, then $|(\phi,\psi)|^2\le(\phi,\phi)(\psi,\psi)$ with equality iff $\phi,\psi$ are linearly dependent.
+\end{theorem}
+\begin{proof}
+    Just copy the proof of the usual Cauchy-Schwartz Inequality.
+\end{proof}
+So we can safely write $\Delta_\psi A=\sqrt{(\Delta_\psi A)^2}$.
+\begin{theorem}[Generalised Uncertainty Theorem]
+    If $A,B$ are observables and $\phi\in\mathcal H$, then
+    $$(\Delta_\psi A)(\Delta_\psi B)\ge\frac{1}{2}|(\psi,[\hat{A},\hat{B}]\psi)|$$
+\end{theorem}
+\begin{proof}
+    Write $\hat{A}'=\hat{A}-\langle\hat{A}\rangle_\psi\hat{I}$ which is also Hermitian, then we have $(\Delta_\psi A)^2=(\hat{A}'\psi,\hat{A}'\psi)$.
+    Similarly $\hat{B}'=\hat{B}-\langle\hat{B}\rangle_\psi\hat{I}$ gives $(\Delta_\psi B)^2=(\hat{B}'\psi,\hat{B}'\psi)$.
+    Note that we have $[\hat{A}',\hat{B}']=[\hat{A},\hat{B}]$.
+    So Schwartz Inequality gives
+    $$(\Delta_\psi A)^2(\Delta_\psi B)^2=(\hat{A}'\psi,\hat{A}'\psi)(\hat{B}'\psi,\hat{B}'\psi)\ge|(\hat{A}'\psi,\hat{B}'\psi)|^2=|(\psi,\hat{A}'\hat{B}'\psi)|^2$$
+    But we can write $\hat{A}'\hat{B}'=([\hat{A}',\hat{B}']+\{\hat{A}',\hat{B}'\})/2$.
+    Consequently,
+    $$(\Delta_\psi A)^2(\Delta_\psi B)^2\ge \frac{1}{4}|(\psi,[\hat{A}',\hat{B}']\psi)+(\psi,\{\hat{A}',\hat{B}'\}\psi) |^2$$
+    But
+    $$(\psi,\{\hat{A}',\hat{B}'\}\psi)=(\{\hat{A}',\hat{B}'\}^\dagger\psi,\psi)=(\{\hat{A}',\hat{B}'\}\psi,\psi)=(\psi,\{\hat{A}',\hat{B}'\}\psi)^*$$
+    so $(\psi,\{\hat{A}',\hat{B}'\}\psi)$ has to be real.
+    Similarly $(\psi,[\hat{A}',\hat{B}']\psi)$ has to be purely imaginary.
+    Therefore
+    \begin{align*}
+        (\Delta_\psi A)^2(\Delta_\psi B)^2&\ge \frac{1}{4}|(\psi,[\hat{A}',\hat{B}']\psi)+(\psi,\{\hat{A}',\hat{B}'\}\psi) |^2\\
+        &=\frac{1}{4}|(\psi,[\hat{A}',\hat{B}']\psi)|^2+|(\psi,\{\hat{A}',\hat{B}'\}\psi) |^2\\
+        &\ge\frac{1}{4}|(\psi,[\hat{A}',\hat{B}']\psi)|^2\\
+        &=\frac{1}{4}|(\psi,[\hat{A},\hat{B}]\psi)|^2
+    \end{align*}
+    Taking square root on both sides shows the theorem.
+\end{proof}
+If $[\hat{A},\hat{B}]=0$, then the bound is just zero.
+This is interpreted as we can measure $A,B$ simultaneously.
+\begin{corollary}[Heisenberg's Uncertainty Principle]
+    $$(\Delta_\psi x)(\Delta_\psi p)\ge\frac{\hbar}{2}$$
+\end{corollary}
+\begin{proof}
+    Just take $\hat{A}=\hat{x},\hat{B}=\hat{p}$ and be reminded that $[\hat{x},\hat{p}]=i\hbar\hat{I}$.
+\end{proof}
+\begin{example}
+    1. We can see a particle with light of wavelength $\lambda\sim\Delta x$ around its de Broglie wavelength $h/p$, so $\Delta p\sim p\sim\hbar/(\Delta x)$ which means $\Delta x\Delta p\sim h=2\pi\hbar>\hbar/2$.\\
+    2. Consider the unnormalisable plane wave solution $\psi_p=e^{ipx/\hbar}$ for a free particle, then $\Delta_{\psi_p}p=0,\Delta_{\psi_p}x=\infty$.
+    Recall that we need to make a certain superposition of it normalisable by introducing the Gaussian wavepackage
+    $$\psi_{\rm GP}(x,t)=\sqrt[4]{\frac{\sigma}{\pi(\sigma^2+\hbar^2t^2/m^2)}}\exp\left( -\frac{\sigma(x-\hbar k_0t/m)^2}{2(\sigma^2+\hbar^2t^2/m^2)} \right)$$
+    where we actually have $(\Delta_{\psi_{\rm GP}}x)(\Delta_{\psi_{\rm GP}}p)=\hbar/2$.
+\end{example}
+We can obtain the equality in the second example by calculation of course, but the gist is actually the following:
+\begin{lemma}
+    If $\hat{x}\psi=ia\hat{p}\psi$ for some $a\in\mathbb R$, then $(\Delta_\psi x)(\Delta_\psi p)=\hbar/2$.
+\end{lemma}
+This condition is easily seen to be necessary.
+\begin{proof}
+    The condition shows that we have the equality case in Schwartz inequality in the proof of the preceding theorem.
+    Furthermore,
+    \begin{align*}
+        (\psi,\{\hat{x},\hat{p}\}\psi)&=(\psi,\hat{x}\hat{p}\psi)+(\psi,\hat{p}\hat{x}\psi)\\
+        &=(\hat{x}\psi,\hat{p}\psi)+(\hat{p}\psi,\hat{x}\psi)\\
+        &=(ia\hat{p}\psi,\hat{p}\psi)+(\hat{p}\psi,ia\hat{p}\psi)\\
+        &=(-ia+ia)(\hat{p}\psi,\hat{p}\psi)\\
+        &=0
+    \end{align*}
+    which implies the lemma.
+\end{proof}
+\begin{lemma}
+    $\hat{x}\psi=ia\hat{p}\psi$ iff $\psi(x)\propto e^{-bx^2}$ for some $b>0$.
+\end{lemma}
+\begin{proof}
+    Obvious.
+\end{proof}
+\subsection{Ehrenfest's Theorem}
+\begin{theorem}[Ehrenfest's Theorem]
+    Let $\hat{A}$ be an operator, then
+    $$\frac{\mathrm d}{\mathrm dt}\langle\hat{A}\rangle_\psi=\frac{i}{\hbar}\langle [\hat{H},\hat{A}]\rangle_\psi+\langle\partial\hat{A}/\partial t\rangle_\psi$$
+\end{theorem}
+\begin{proof}
+    Just expand.
+    \begin{align*}
+        \frac{\mathrm d}{\mathrm dt}\langle\hat{A}\rangle_\psi&=\frac{\mathrm d}{\mathrm dt}\int_{-\infty}^\infty\psi^*\hat{A}\psi\,\mathrm dx\\
+        &=\int_{-\infty}^\infty\frac{\mathrm d}{\mathrm dt}(\psi^*\hat{A}\psi)\,\mathrm dx\\
+        &=\int_{-\infty}^\infty \left( \frac{\partial\psi^*}{\partial t}\hat{A}\psi+\psi^*\hat{A}\frac{\partial\psi}{\partial t} \right)\,\mathrm dx+\langle\partial\hat{A}/\partial t\rangle_\psi\\
+        &=\frac{i}{\hbar}\int_{-\infty}^\infty (\psi^*\hat{H}\hat{A}\psi-\psi^*\hat{A}\hat{H}\psi)\,\mathrm dx+\langle\partial\hat{A}/\partial t\rangle_\psi\\
+        &=\frac{i}{\hbar}\langle[\hat{H},\hat{A}]\rangle_\psi+\langle\partial\hat{A}/\partial t\rangle_\psi
+    \end{align*}
+    which is what we wanted.
+\end{proof}
+\begin{example}
+    Take $\hat{A}=\hat{H}$, then $[\hat{H},\hat{H}]=0$, so $\mathrm d\langle\hat{H}\rangle_\psi/\mathrm dt=0$ which is equivalent to the conservation of total energy in quantum mechanics.\\
+    Take $\hat{A}=\hat{p}$, then $[\hat{H},\hat{p}]=i\hbar\partial U/\partial x$, therefore,
+    $$\frac{\mathrm d\langle\hat{p}\rangle_\psi}{\mathrm dt}=-\left\langle\frac{\mathrm dU}{\mathrm dx}\right\rangle_\psi$$
+    which is analogous to the classical case.\\
+    Take $\hat{A}=\hat{x}$, ten we obtain $[\hat{H},\hat{x}]=-i\hbar\hat{p}/m$,
+    $$\frac{\mathrm d\langle\hat{x}\rangle_\psi}{\mathrm dt}=\frac{\langle\hat{p}\rangle_\psi}{m}$$
+    which is again analogous to classical mechanics.
+\end{example}
+\subsection{The Harmonic Oscillator Revisited}
+For a harmonic oscillator, the Hamiltonian is
+\begin{align*}
+    \hat{H}&=\frac{\hat{p}^2}{2m}+\frac{1}{2}m\omega^2\hat{x}^2\\
+    &=\frac{1}{2m}(\hat{p}+im\omega\hat{x})(\hat{p}-im\omega\hat{x})+\frac{i\omega}{2}[\hat{p},\hat{x}]\\
+    &=\frac{1}{2m}(\hat{p}+im\omega\hat{x})(\hat{p}-im\omega\hat{x})+\frac{\hbar\omega}{2}
+\end{align*}
+Write $\hat{a}=(\hat{p}-im\omega\hat{x})/\sqrt{2m}$ (called the ladder operator), then $\hat{a}^\dagger=(\hat{p}+im\omega\hat{x})/\sqrt{2m}$ and $\hat{H}=\hat{a}^\top\hat{a}+\hbar\omega/2$.
+Also $[\hat{a},\hat{a}^\dagger]=\hbar\omega\hat{I}$, therefore $\hat{a}$ is Hermitian.
+In addition $[\hat{H},\hat{a}]=-\hbar\omega\hat{a}$ and $[\hat{H},\hat{a}^\dagger]=\hbar\omega\hat{a}^\dagger$.
+Suppose $X$ is an eigenfunction of $\hat{H}$ with eigenvalue $E$, that is $\hat{H}X=EX$, then $\hat{H}\hat{a}X=[\hat{H},\hat{a}]X+\hat{a}\hat{H}X=(-\hbar\omega+E)\hat{a}X$.
+Similarly $\hat{a}^\dagger =(E+\hbar\omega)\hat{a}^\dagger X$.
+Then by induction $\hat{a}^nX$ is an eigenfunction of $\hat{H}$ with eigenvalue $E-n\hbar\omega$ and $\hat{a}^\dagger X$ an eigenfunction with eigenvalue $E+n\hbar\omega$.
+For $U\ge 0$, we have $\langle H\rangle_\psi\ge 0$, so we can choose the lowest positive eigenfunction $X_0$ and we must then have $\hat{a}X_0=0$.
+This is just a first order differential equation, which can be easily solved to give $X_0(x)\propto\exp(-m\omega x^2/(2\hbar))$.
+So $X_0$ has eigenvalue $\hbar\omega/2$.
+To find the excited states, we simply need to compute
+$$X_n=(\hat{a}^\dagger)^nX_0\propto\frac{1}{\sqrt{2m}}(\hat{p}+im\omega\hat{x})^n\exp(-m\omega x^2/(2\hbar))$$
+which involves Hermite polynomials.
+They then have eigenvalue $E_n=(n+1/2)\hbar\omega$.

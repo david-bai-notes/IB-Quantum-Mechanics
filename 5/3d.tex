@@ -1,0 +1,192 @@
+\section{Schr\"odinger's Equation in Three Dimensions}
+\subsection{TISE in 3D for Spherically Symmetric Potentials}
+The TISE in 3D is in the form $\hat{H}X=EX$ where
+$$\hat{H}=-\frac{\hbar^2}{2m}\nabla^2X+UX$$
+In spherical coordiates $x=r\cos\phi\cos\theta,y=r\sin\phi\sin\theta,z=r\cos\theta$ where $r\in[0,\infty],\theta\in[0,\pi],\phi\in[0,2\pi)$, the Laplacian becomes
+$$\nabla^2X=\frac{1}{r}\frac{\partial^2(rX)}{\partial r^2}+\frac{1}{r^2\sin^2\theta}\left( \sin\theta\frac{\partial}{\partial\theta}\left( \sin\theta\frac{\partial X}{\partial\theta} \right)+\frac{\partial^2X}{\partial\phi^2} \right)$$
+We consider the case where $U=U(r,\theta,\phi)=U(r)$ and we are only looking for spherically symmetric solutions $X(r,\theta,\phi)=X(r)$.
+Then the Hamiltonian becomes
+$$\hat{H}X=-\frac{\hbar^2}{2m}\frac{1}{r}\frac{\mathrm d^2(rX)}{\mathrm dr^2}+UX=-\frac{\hbar^2}{2m}\left( \frac{\mathrm d^2X}{\mathrm dr^2}+\frac{2}{r}\frac{\mathrm dX}{\mathrm dr} \right)+UX$$
+We have the normalisation condition
+$$\int_{\mathbb R^3}|\psi^2|\,\mathrm dV<\infty\implies \int_0^\infty|X(r)|^2r^2\,\mathrm dr<\infty$$
+which means $X(r)\to 0$ sufficiently fast as $r\to\infty$.\\
+Consider $\sigma(r)=rX(r)$, then TISE becomes $\hat{H}\sigma=E\sigma$ on the half-plane $r\ge 0$.
+Now the plan is to solve this on the whole line with $U(-r)=U(r)$.
+As $X(0)$ are defined, $\sigma(0)=0$.
+We only need to look for odd solutions $\sigma(-r)=-\sigma(r)$ since:
+\begin{lemma}
+    There is no nontrivial even solution to the problem.
+\end{lemma}
+\begin{proof}
+    Suppose there is, say it is $\sigma_+$, then necessarily it is $C^2$ (for the equation to make sense) and hence $\sigma_+^\prime(0)=\sigma_+^{\prime\prime}(0)=0$.
+    Then we have a corresponding odd solution
+    $$\sigma_-(r)=\begin{cases}
+        \sigma_+(r)\text{, for $r\ge 0$}\\
+        -\sigma_+(r)\text{, for $r<0$}
+    \end{cases}$$
+    But then $\sigma(r)=\sigma_+(r)-\sigma_-(r)$ is a solution to the equation by linearity and vanishes for any $r>0$, which should not happen.
+    \footnote{Well.}
+\end{proof}
+\begin{example}
+    Consider the symmetric potential well
+    $$U(r)=\begin{cases}
+        0\text{, for $r\le a$}\\
+        U_0\text{, for $r>a$}
+    \end{cases}$$
+    where $a,U_0>0$.
+    For $0<E<U_0$, again let $k=\sqrt{2mE/\hbar^2}$ and $\bar{k}=\sqrt{2m(U_0-E)/\hbar^2}$, so
+    $$\sigma(r)=\begin{cases}
+        A\sin(kr)\text{, for $r\le a$}\\
+        Be^{-\bar{k}r}\text{, for $r<a$}
+    \end{cases}$$
+    The boundary conditions gives $-k\cot(ka)=\bar{k}$ and we already know that $k^2+\bar{k}^2=2mU_0/\hbar^2$.
+    Again define $\xi=ka,\eta=\bar{k}a$ and $r_0=a\sqrt{2mU_0/\hbar^2}$, so we have
+    $$\begin{cases}
+        -\xi\cot(\xi)=\eta\\
+        \xi^2+\eta^2=r_0^2
+    \end{cases}$$
+    Now if $r_0<\pi/2$ (that is $U_0<\pi^2\hbar^2/(8ma^2)$), then there is no bounded solution.
+    But unlike the one-dimensional case, we can always find at least one bounded state.
+\end{example}
+\subsection{The Radial Wavefunction of Hydrogen Atom}
+The hydrogen atom consists of a proton $p^+$ and an electron $e^-$.
+The Coulomb force is
+$$F=-\frac{e^2}{4\pi\epsilon_0r^2}=-\frac{\partial U}{\partial r}\implies U(r)=-\frac{e^2}{4\pi\epsilon_0r}$$
+So the bound states must have $E<0$, and $e^-$ is at rest $E=0$ as $r\to\infty$.
+We want to look for stationary states of $e^-$ with spherically symmetric wavefunction $X=X(r)$ to
+$$-\frac{\hbar^2}{2m}\left( \frac{\mathrm d^2X}{\mathrm dr^2}+\frac{2}{r}\frac{\mathrm dX}{\mathrm dr} \right)-\frac{e^2}{4\pi\epsilon_0r}X=EX$$
+Then we need $E<0$ for bound states.
+Define
+$$\nu=\sqrt{-\frac{2mE}{\hbar^2}},\beta=\frac{e^2m}{2\pi\epsilon_0\hbar^2}$$
+Then the equation becomes
+$$\frac{\mathrm d^2X}{\mathrm dr^2}+\frac{2}{r}\frac{\mathrm dX}{\mathrm dr}+\left( \frac{\beta}{r}-\nu^2 \right)X=0$$
+As $r\to\infty$, if we assume $X,X^\prime$ do not explode near $\infty$, then the equation becomes $X^{\prime\prime}-\nu^2X=0$, so $X(r)\sim e^{-\nu r}$ as $r\to\infty$.
+This inspires us to try $X(r)=f(r)e^{-\nu r}$, which transforms the equation into
+$$\frac{\mathrm d^2f}{\mathrm dr^2}+\frac{2}{r}(1-\nu r)\frac{\mathrm df}{\mathrm dr}+\frac{1}{r}(\beta-2\nu)f=0$$
+which has a regular singular point at $r=0$, so we shall try the series solution $f(r)=r^c\sum_n a_nr^n$.
+Plugging in,
+$$0=\sum_{r=0}^\infty a_n(c+n)(c+n-1)r^{c+n-2}+\frac{2}{r}(1-\nu r)a_n(c+n)r^{c+n-1}+(\beta-2\nu)r^{c+n-1}$$
+By looking at the coefficient of $r^{c-2}$, we have $0=a_0c(c+1)r^{c-2}$, so $c=-1$ or $c=0$.
+The former is discarded as it has a singularity at $0$.
+So $c=0$, hence $f(r)=\sum_na_nr^n$ and
+$$0=\sum_{n=2}^\infty (a_nn(n+1)+a_{n-1}(\beta-2\nu))r^{n-2}=0\implies a_n=\frac{2\nu n-\beta}{n(n+1)}a_{n-1}$$
+So all the coefficients are determined from $a_0$.
+\begin{lemma}
+    If the series above does not terminate, then the function $X(r)=f(r)e^{-\nu r}$ is not normalisable.
+\end{lemma}
+\begin{proof}
+    If the series does not terminate then asymptotically $a_n\sim C(2\nu)^n/n!$ for some nonzero constant $C$ as $n\to\infty$.
+    Therefore $f(r)\sim e^{2\nu r}$, hence $X(r)\sim e^{\nu r}$ as $r\to\infty$ which means that it is not normalisale.
+\end{proof}
+So necessarily there is some $N$ such that $2\nu N-\beta=0$, so $\nu=\beta/(2N)$.
+We can work out the energy eigenfunction from that:
+$$\nu^2=-\frac{2mE}{\hbar^2},\beta=\frac{e^2m}{2\pi\epsilon_0\hbar^2}\implies E=E_N=-\frac{e^4m}{32\pi^2\epsilon_0^2\hbar^2}\frac{1}{N^2}$$
+which is exactly the energy levels deduced by Bohr's radius.
+Would this mean that Bohr's model is fully correct?
+Not really, as there can be solutions that are not spherically symmetric.\\
+Let's find the eigenfunctions now.
+Plugging the relation between $N,\nu$ and $\beta$ we have
+$$\frac{a_n}{a_{n-1}}=-2\nu\frac{N-n}{n(n+1)}$$
+$N=1$ gives a constant $f=f_1$, so $X_1(r)\propto e^{-\nu r}$.
+$N=2$ gives $f_2(r)\propto 1-\nu r$, so $X_2(r)\propto (1-\nu r)e^{-\nu r}$.
+$N=3$ gives $f_3(r)\propto 1-2\nu r+2\nu^2r^2/3$, so $X_3(r)=(1-2\nu r+2\nu^2r^2/3)e^{-\nu r}$.
+And in general $f_N(r)=L_N(\nu r)$ where $L_N$ is the Legendre polynomial of order $N-1$ and hence $X_N(r)=L_N(\nu r)e^{-\nu r}$.
+It is easy enough to normalise this for small $N$.
+For the ground state $N=1$, the normalised wavefunction is
+$$X_1(r)=\frac{\nu^{3/2}}{\sqrt{\pi}}e^{-2\nu r}=\frac{1}{\sqrt\pi}\left( \frac{e^2m}{4\pi \epsilon_0\hbar^2} \right)^{3/2}e^{-2\nu r}$$
+With a little calculation we have $\langle r\rangle_{X_1}=3a_0/2$ where $a_0=2/\beta$ is the Bohr radius.
+\subsection{Angular Momentum in Quantum Mechanics}
+In classical dynamics, we defined the angular momentum $\underline{L}=\underline{x}\times\underline{p}$ which is a conserved quantity subject to spherically symmetrical potential.
+Whereas in quantum mechanics, we have an analogous notion.
+\begin{definition}
+    The angular momentum operator is defined by $\underline{\hat{L}}=\underline{\hat{x}}\times\underline{\hat{p}}=-i\hbar\underline{x}\times\nabla$.
+\end{definition}
+Consequently components of $\underline{\hat{L}}$ are Hamiltonian and $[\hat{L}_i,\hat{L}_j]=i\hbar\epsilon_{ijk}\hat{L}_k\neq 0$ for $i\neq j$.
+Therefore components of $\underline{\hat{L}}$ cannot be simultaneously measured.
+\begin{definition}
+    The total angular momentum operator is defined as $\hat{L}^2=|\hat{L}|^2=\hat{L}_1^2+\hat{L}_2^2+\hat{L}_3^2$.
+\end{definition}
+Then $[\hat{L}^2,\hat{L}_i]=0$ for all $i$ and $[\hat{H},\hat{L}^2]=0$ if $U$ is spherically symmetric.
+To see the latter property, just observe that $[\hat{L}_i,\hat{x}_j]=i\hbar\epsilon_{ijk}\hat{x}_k$ and $[\hat{L}_i,\hat{p}_j]=i\hbar\epsilon_{ijk}\hat{p}_k$ and write $\hat{H}=\hat{p}^2/2m+\hat{U}$.
+Consequently, fixing any $i$, $\{\hat{H},\hat{L}^2,\hat{L}_i\}$ is a set of $3$ mutually commuting operators.
+Choose $i=3$, then $\hat{L}_3=\hat{L}_z$ is the $z$ component of angular momentum.
+We can find simultaneous eigenstates of all three operators $\{\hat{H},\hat{L}^2,\hat{L}_3\}$.
+The corresponding eigenvalues are observables.
+Also, this set if maximal in the sense that there does not exists another independent operator other than $\hat{I}$ which commutes with all three.\\
+What are the eigenfunctions?
+We first try to find joint eigenfunctions of $\hat{L}^2,\hat{L}_3$.
+In spherical polar coordinate, we can expand
+$$\hat{L}^2=-\frac{\hbar^2}{\sin^2\theta}\left( \sin\theta\frac{\partial}{\partial\theta}\left( \sin\theta\frac{\partial}{\partial\theta} \right)+\frac{\partial^2}{\partial\phi^2} \right),\hat{L}_3=-i\hbar\frac{\partial}{\partial\phi}$$
+If $Y=Y(\theta,\phi)$ is an eigenfunction of $\hat{L}_3$, then $\hat{L}_3Y=\hbar mY$ for some $m$.
+Consequently $-iY_\phi=mY$.
+Seperation of variables $Y(\theta,\phi)=y(\theta)x(\phi)$ gievs $x_\phi=imx$, so $x(\phi)=e^{im\phi}$.
+But $x$ has to have period $2\pi$, so $m\in\mathbb Z$.
+Now $\hat{L}^2(y(\theta)e^{im\phi})=\lambda y(\theta)e^{im\phi}$ gives
+$$\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left( \sin\theta\frac{\partial y}{\partial\theta} \right)-\frac{m^2}{\sin^2\theta}y(\theta)=-\frac{\lambda}{\hbar^2}y(\theta)$$
+Which is Legendre equation.
+By our study in Methods, we have
+$$y_l(\theta)=P_{l,m}(\cos\theta)=(\sin\theta)^{|m|}\left.\frac{\mathrm d^{|m|}}{\mathrm dx^{|m|}}P_l(x)\right|_{x=\cos\theta}$$
+where $P_l$ are the ordinary Legendre polynomials and $\lambda=l(l+1)\hbar^2$ for $-l\le m\le l$.
+So the simultaneous eigenfunctions of $\hat{L}^2$ and $\hat{L}_3$ are labelled by $l=0,1,2,\ldots,m\in\{-l,\ldots,l\}$ and take the form
+$$y_{l,m}(\theta,\phi)=P_{l,m}(\cos\theta)e^{im\phi}$$
+with eigenvalues $m\hbar$ and $l(l+1)\hbar^2$ respectively.
+Physically, we interpret $l$ as the total angular momentum numbers and $m$ the azimuthal quantum numbers.
+Note that the constraint $m\in[-l,l]$ corresponds to the classical mechanical result of $-|L|\le L_3\le |L|$.\\
+We can compute (whyyyyyyyy) some of these eigenfunctions (known as spherical harmonics):
+$$Y_{0,0}=\frac{1}{\sqrt{4\pi}},Y_{1,0}=\sqrt{\frac{3}{4\pi}}\cos\theta,Y_{1,\pm 1}(\theta,\phi)=\mp\sqrt{\frac{3}{8\pi}}\sin\theta e^{\pm i\phi}$$
+$$Y_{2,0}(\theta,\phi)=\sqrt{\frac{5}{16\pi}}(3\cos^2\theta-1),Y_{2,\pm 1}(\theta,\phi)=\mp\sqrt{\frac{15}{8\pi}}\sin\theta\cos\theta e^{\pm i\phi}$$
+$$Y_{2,\pm 2}(\theta,\phi)=\sqrt{\frac{15}{32\pi}}\sin^2\theta e^{\pm 2i\phi}$$
+\subsection{Full Wavefunction of the Hydrogen Atom}
+Recall that in spherical polar,
+$$\nabla^2X=\frac{1}{r}\frac{\partial^2(rX)}{\partial r^2}+\frac{1}{r^2\sin^2\theta}\left( \sin\theta\frac{\partial}{\partial\theta}\left( \sin\theta\frac{\partial X}{\partial\theta} \right)+\frac{\partial^2X}{\partial\phi^2} \right)$$
+and
+$$\hat{L}^2X=\frac{\hbar^2}{\sin^2\theta}\left( \sin\theta\frac{\partial}{\partial\theta}\left( \sin\theta\frac{\partial X}{\partial\theta} \right) +\frac{\partial^2}{\partial\phi^2}\right)$$
+Therefore
+$$-\hbar^2\nabla^2X=-\frac{\hbar^2}{r}\frac{\partial^2(rX)}{\partial r^2}+\frac{\hat{L}^2X}{r^2}$$
+which means that we can rewrite the Hamiltonian as
+$$\hat{H}X=-\frac{\hbar^2}{2m}\left( \frac{\partial^2X}{\partial r^2}+\frac{2}{r}\frac{\partial X}{\partial r} \right)+\frac{\hat{L}^2X}{2mr^2}-\frac{e^2}{4\pi\epsilon_0r}X$$
+As $\{\hat{H},\hat{L}^2,\hat{L}_3\}$ is a set of commuting operators, we look for solutions to $\hat{H}X=EX$ of the form $X(r,\theta,\phi)=g(r)Y_{l,m}(\theta,\phi)$, which (after a lot of calculations) yields
+$$\frac{\mathrm d^2g}{\mathrm dr^2}+\frac{2}{r}\frac{\mathrm dg}{\mathrm dr}-\frac{l(l+1)}{r^2}g+\frac{\beta}{r}g-\nu^2g=0,\nu=\sqrt{-\frac{2mE}{\hbar^2}},\beta=\frac{e^2m}{2\pi\epsilon_0\hbar^2}$$
+The rest is similar to what we did for the spherically symmetrical case.
+We seek solutions of the form $g(r)=f(r)e^{-\nu r}$ due to its limiting behavour, which gives
+$$\frac{\mathrm d^2f}{\mathrm dr^2}+\frac{2}{r}(1-\nu r)\frac{\mathrm df}{\mathrm dr}-\frac{l(l+1)}{r^2}f+\frac{1}{r}(\beta-2\nu)f=0$$
+The same procedure of finding series solution applies.
+Since $0$ is a regular singular point, we try solutions of the form $f(r)=r^\sigma\sum_na_nr^n$.
+By routine work of substituting we get the indicial equation $\sigma(\sigma-1)+2\sigma-l(l+1)=0$, hence $\sigma=l$ or $\sigma=-l-1$.
+The latter case has to be discarded as we don't want singularity at $0$.
+Therefore $f(r)=r^l\sum_na_nr^n$.
+Again routine substitution work yields the recurrence
+$$a_n=\frac{2\nu(n+l)-\beta}{n(n+2l+1)}a_{n-1}$$
+which determines the series completely up to a constant.
+The same trick as before applies:
+If the series does not terminate, then by estimating the order of growth of $(a_n)$ we find that the $g$ that we want will not be normalisable.
+Therefore the series must terminate.
+This means that (for nonzero $a_0$) there exists some $n_{\max{}}$ such that $a_{n_{\max{}}}=0$ but $a_{n_{\max{}}-1}\neq0$ which has to satisfy
+$$2\nu(n_{\max{}}+l)-\beta=0\implies \nu=\frac{\beta}{2N},N=n_{\max{}}+l$$
+by plugging in the respective definition, the energy levels are
+$$E=E_N=-\frac{e^4m}{32\pi^2\epsilon_0^2\hbar^2}\frac{1}{N^2}$$
+So the spectrum of energy levels is identical to what we obtained in the special case where the eigenfunctions are spherically symmetric.
+But in this more general setting, the eigenvalues can have some other (non-spherically-symmetric) eigenfunctions.
+How many of them?
+It's not hard to see:
+For each $N$, there are exactly
+$$D(N)=\sum_{l=0}^{N-1}\sum_{n=-l}^l1=\sum_{l=0}^{N-1}(2l+1)=N^2$$
+many different eigenfunctions.
+This is called the degeneracy of the energy value $E_N$.
+So the full spectrum of the eigenfunctions of the Hydrogen atom is then
+$$X_{N,l,m}(r,\theta,\phi)=\xi^lL_{N,l}(\xi)e^{-\xi}Y_{l,m}(\theta,\phi),\xi=\frac{\beta r}{2N}=\frac{e^2mr}{4N\pi\epsilon_0\hbar^2}$$
+where $L_{N,l}$ (whose coefficients are defined by our terminating series earlier) are called the generalised Laguerre polynomials and $Y_{l,m}$ are the spherical harmonics.\\
+$N=1,2,3,\ldots$ are called the principal quantum numbers, $l=0,\ldots,N-1$ are the total angular momentum quantum numbers and $m\in\{-l,\ldots,l\}$ are the azimuthal quantum numbers.
+The Bohr model captured the case where $m=l\simeq N>>1$.
+In this case $L_3==m\hbar\simeq N\hbar$ and $L=\sqrt{L^2}=\sqrt{l(l+1)\hbar^2}\simeq N\hbar$.\\
+Note that due to the definition of the spherical harmonics, we have
+$$\int_0^{2\pi}\int_{-1}^1\int_0^\infty |X_{N,l,m}(r,\theta,\phi)|^2r^2\,\mathrm dr\mathrm d(\cos\theta)\mathrm d\phi=\int_0^\infty |g(r)|^2r^2\,\mathrm dr$$
+So we define $P(r)|g(r)|^2r^2$ as the radial probability.
+Asymptotically,
+$$P(r)=r^2|g(r)|^2\sim r^{2(l+1)}\exp\left( -\frac{\beta r}{2(l+1)} \right)$$
+which, in the Bohr limit, just gives $r^{2N}\exp(-\beta r/N)$.
+By differentiating, the stationary points of $P$ (i.e. the modes) are approximately at $r_{\rm peak}\simeq 2N^2/\beta=N^2r_1$ which is the same as what we obtained using Bohr's model.
+\subsection{Towards Periodic Table}
+If we have a nucleus with charge $+ze$ and there are $z$ electrons around it which are treated as independent particles (so ignore any interactions betweem electrons like electromagnetism and gravity), then the eigenfunction can be seperated as $X(\underline{x}_1,\ldots,\underline{x}_z)=X(\underline{x}_1)\cdots X(\underline{x}_z)$ where each $X(\underline{x}_i)$ is a rescaled solution for the Hydrogen atom.
+Its energy level is then the sum of energies of all electrons $E=\sum_iE_i$.
+which works for small $z$, but the interaction force between electrons is growing when $z$ is large -- which is why we need to develop more theory in next year's Principle of Quantum Mechanics.
